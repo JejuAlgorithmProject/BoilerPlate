@@ -53,9 +53,7 @@ function DetailPostPage(props) {
                             <div></div>
                         </List.Item>
 
-                        {user.userData.isAuth === true ? (
-                            <Comments CommentLists={CommentLists} postId={Post._id} refreshFunction={updateComment} />
-                        ) : null}
+                        <Comments CommentLists={CommentLists} postId={Post._id} refreshFunction={updateComment} />
                     </div>
                 </Col>
             </Row>

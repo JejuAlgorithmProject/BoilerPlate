@@ -4,12 +4,15 @@ import {Card, Avatar, Col, Typography, Row} from 'antd'
 import axios from 'axios'
 import moment from 'moment'
 import UploadPage from '../UploadPage/UploadPage'
+import {useSelector} from 'react-redux'
 
 const {Title} = Typography
 const {Meta} = Card
 
 function LandingPage() {
     const [Posts, setPosts] = useState([])
+    const user = useSelector(state => state.user)
+    console.log(user)
 
     useEffect(() => {
         axios.get('/api/post/getPosts').then(response => {
@@ -41,19 +44,23 @@ function LandingPage() {
         )
     })
 
-    return (
-        <div style={{width: '85%', margin: '3rem auto'}}>
-            <Title level={2}> 일긔 </Title>
-            <hr />
+    if (user.userData && user.userData.isAuth) {
+        return (
+            <div style={{width: '85%', margin: '3rem auto'}}>
+                <Title level={2}> 일긔 </Title>
+                <hr />
 
-            <Row gutter={16}>
-                <Col span={20}>{renderCards}</Col>
-                <Col span={4}>
-                    <UploadPage />
-                </Col>
-            </Row>
-        </div>
-    )
+                <Row gutter={16}>
+                    <Col span={20}>{renderCards}</Col>
+                    <Col span={4}>
+                        <UploadPage />
+                    </Col>
+                </Row>
+            </div>
+        )
+    } else {
+        return <div style={{width: '85%', margin: '3rem auto'}}>로그인 PLZ</div>
+    }
 }
 
 export default LandingPage
