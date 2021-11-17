@@ -27,7 +27,7 @@ function LandingPage() {
             <Col lg={6} md={8} xs={24} key={index}>
                 <div style={{position: 'relative'}}>
                     <a href={`/post/${post._id}`}>
-                        <img src={post.selectedFile} alt="" width="230px" height="130px" />
+                        <img src={post.selectedFile} alt="" width="100%" height="40%" />
                     </a>
                 </div>
                 <br />

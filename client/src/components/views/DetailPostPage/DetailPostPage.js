@@ -3,8 +3,10 @@ import {List, Avatar, Row, Col} from 'antd'
 import axios from 'axios'
 import Comments from './Sections/Comments'
 import LikeDislikes from './Sections/LikeDislikes'
+import {useSelector} from 'react-redux'
 
 function DetailPostPage(props) {
+    const user = useSelector(state => state.user)
     const postId = props.match.params.postId
     const [Post, setPost] = useState([])
     const [CommentLists, setCommentLists] = useState([])
@@ -15,9 +17,7 @@ function DetailPostPage(props) {
 
     useEffect(() => {
         axios.post('/api/post/getPost', postVariable).then(response => {
-            console.log(response)
             if (response.data.success) {
-                console.log(response.data.post)
                 setPost(response.data.post)
             } else {
                 alert('Failed to get post Info')
@@ -53,7 +53,9 @@ function DetailPostPage(props) {
                             <div></div>
                         </List.Item>
 
-                        <Comments CommentLists={CommentLists} postId={Post._id} refreshFunction={updateComment} />
+                        {user.userData.isAuth === true ? (
+                            <Comments CommentLists={CommentLists} postId={Post._id} refreshFunction={updateComment} />
+                        ) : null}
                     </div>
                 </Col>
             </Row>

@@ -16,7 +16,6 @@ function Comments(props) {
 
     const onSubmit = e => {
         e.preventDefault()
-
         const variables = {
             content: Comment,
             writer: user.userData._id,
@@ -39,7 +38,7 @@ function Comments(props) {
             <p> replies</p>
             <hr />
             {/* Comment Lists  */}
-            {console.log(props)}
+            {console.log(user)}
 
             {props.CommentLists &&
                 props.CommentLists.map(
