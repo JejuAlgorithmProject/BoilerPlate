@@ -18,8 +18,8 @@
 .loader {
   display: flex;
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -59,7 +59,8 @@
 }
 
 .loader h2 {
-  font-weight: 500;
+  font-size: 2em;
+  font-weight: 600;
   font-family: consolas;
   /* color: #fff; */
   z-index: 0;
