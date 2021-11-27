@@ -5,6 +5,7 @@ import axios from 'axios';
 import moment from 'moment';
 import UploadPage from '../UploadPage/UploadPage';
 import { useSelector } from 'react-redux';
+import NavBar from '../NavBar/NavBar';
 
 const { Title } = Typography;
 // const { Meta } = Card;
@@ -46,23 +47,19 @@ function LandingPage() {
     );
   });
 
-  if (user.userData && user.userData.isAuth) {
-    return (
-      <div style={{ width: '85%', margin: '3rem auto' }}>
-        <Title level={2}> 일긔 </Title>
-        <hr />
+  return (
+    <div style={{ width: '85%', margin: '3rem auto' }}>
+      <Title level={2}> 일긔 </Title>
+      <hr />
 
-        <Row gutter={16}>
-          <Col span={20}>{renderCards}</Col>
-          <Col span={4}>
-            <UploadPage />
-          </Col>
-        </Row>
-      </div>
-    );
-  } else {
-    return <div style={{ width: '85%', margin: '3rem auto' }}>로그인 PLZ</div>;
-  }
+      <Row gutter={16}>
+        <Col span={20}>{renderCards}</Col>
+        <Col span={4}>
+          <UploadPage />
+        </Col>
+      </Row>
+    </div>
+  );
 }
 
 export default LandingPage;

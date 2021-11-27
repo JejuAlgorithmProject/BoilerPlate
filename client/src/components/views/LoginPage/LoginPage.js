@@ -31,7 +31,7 @@ function LoginPage(props) {
       // response 값에 user_reducer의 state 값이 리턴되어 들어옴
       console.log(response);
       if (response.payload.loginSuccess) {
-        props.history.push('/');
+        props.history.push('/home');
       } else {
         alert('Error˝');
       }
