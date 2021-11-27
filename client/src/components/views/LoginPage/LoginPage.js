@@ -3,6 +3,44 @@ import Axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../../_actions/user_actions';
 import { withRouter } from 'react-router-dom';
+import styled from 'styled-components';
+
+const SignIn_Input = styled.input`
+  border: 0;
+  background: none;
+  display: block;
+  margin: 10px auto;
+  text-align: center;
+  border: 3px solid #735f4d;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  &:focus {
+    width: 280px;
+    border-color: #4b4033;
+  }
+`;
+
+const SignIn_button = styled.button`
+  border: 0;
+  background: #735f4d;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: 0.25s;
+  &:hover {
+    background: #4b4033;
+  }
+`;
+
 function LoginPage(props) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -53,11 +91,24 @@ function LoginPage(props) {
         onSubmit={onSubmitHandler}
       >
         <label>Email</label>
-        <input type="email" value={Email} onChange={onEmailHandler} />
+        <SignIn_Input
+          type="email"
+          value={Email}
+          onChange={onEmailHandler}
+          placeholder="Email"
+        />
+        {/* <input type="email" value={Email} onChange={onEmailHandler} /> */}
         <label>Password</label>
-        <input type="password" value={Password} onChange={onPasswordHandler} />
+        <SignIn_Input
+          type="password"
+          value={Password}
+          onChange={onPasswordHandler}
+          placeholder="Password"
+        />
+        {/* <input type="password" value={Password} onChange={onPasswordHandler} /> */}
         <br />
-        <button type="submit">Login</button>
+        {/* <button type="submit">Login</button> */}
+        <SignIn_button type="submit">Login</SignIn_button>
       </form>
     </div>
   );

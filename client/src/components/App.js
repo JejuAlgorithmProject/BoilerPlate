@@ -10,6 +10,7 @@ import Footer from './views/Footer/Footer';
 import DetailPostPage from './views/DetailPostPage/DetailPostPage';
 import UploadPage from './views/UploadPage/UploadPage.js';
 import HomePage from './views/HomePage/HomePage';
+import SignPage from './views/SignPage/SignPage';
 // import SubscriptionPage from "./views/SubscriptionPage/SubscriptionPage"
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
       <div
         style={{
           paddingTop: '75px',
-          minHeight: 'calc(100vh - 80px)',
+          // minHeight: 'calc(100vh - 80px)',
+          minHeight: 'calc(100vh)',
           backgroundColor: '#D9C5A0',
         }}
       >
@@ -32,6 +34,7 @@ function App() {
           />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          <Route exact path="/sign" component={Auth(SignPage, false)} />
           <Route exact path="/post/upload" component={Auth(UploadPage, true)} />
           <Route
             exact

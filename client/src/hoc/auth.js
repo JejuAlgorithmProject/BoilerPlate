@@ -11,7 +11,7 @@ export default function (ComposedClass, reload, adminRoute = null) {
       dispatch(auth()).then(async (response) => {
         if (await !response.payload.isAuth) {
           if (reload) {
-            props.history.push('/login');
+            props.history.push('/sign');
           }
         } else {
           if (adminRoute && !response.payload.isAdmin) {
