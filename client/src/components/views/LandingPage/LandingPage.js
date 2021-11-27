@@ -30,7 +30,7 @@ function LandingPage() {
   const renderCards = Posts.map((post, index) => {
     console.log(post);
     return (
-      <Col lg={6} md={8} xs={24} key={index}>
+      <Col lg={6} md={8} xs={24} key={index} style={{ border: 'solid 2px' }}>
         <div style={{ position: 'relative' }}>
           <a href={`/post/${post._id}`}>
             <img src={post.selectedFile} alt="" width="100%" height="40%" />
@@ -48,14 +48,14 @@ function LandingPage() {
   });
 
   return (
-    <div style={{ width: '85%', margin: '3rem auto' }}>
+    <div style={{ width: '90%', margin: '3rem auto' }}>
       <Title level={2}> 일긔 </Title>
       <hr />
 
       <Row gutter={16}>
-        <Col span={20}>{renderCards}</Col>
-        <Col span={4}>
-          <UploadPage />
+        <Col span={18}>{renderCards}</Col>
+        <Col span={6}>
+          <UploadPage style={{ width: '50%' }} />
         </Col>
       </Row>
     </div>
