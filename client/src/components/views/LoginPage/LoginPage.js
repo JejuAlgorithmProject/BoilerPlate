@@ -1,120 +1,107 @@
-import React, { useState } from 'react';
-import Axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../../_actions/user_actions';
-import { withRouter } from 'react-router-dom';
-import styled from 'styled-components';
+import React, {useState} from 'react'
+import Axios from 'axios'
+import {useDispatch, useSelector} from 'react-redux'
+import {loginUser} from '../../../_actions/user_actions'
+import {withRouter} from 'react-router-dom'
+import styled from 'styled-components'
 
 const SignIn_Input = styled.input`
-  border: 0;
-  background: none;
-  display: block;
-  margin: 10px auto;
-  text-align: center;
-  border: 3px solid #735f4d;
-  padding: 14px 10px;
-  width: 200px;
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  transition: 0.25s;
-  &:focus {
-    width: 280px;
-    border-color: #4b4033;
-  }
-`;
+    border: 0;
+    background: none;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    border: 3px solid #735f4d;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    &:focus {
+        width: 280px;
+        border-color: #4b4033;
+    }
+`
 
 const SignIn_button = styled.button`
-  border: 0;
-  background: #735f4d;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-  padding: 14px 40px;
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  cursor: pointer;
-  transition: 0.25s;
-  &:hover {
-    background: #4b4033;
-  }
-`;
+    border: 0;
+    background: #735f4d;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: 0.25s;
+    &:hover {
+        background: #4b4033;
+    }
+`
 
 function LoginPage(props) {
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
-  console.log(user);
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.user)
+    console.log(user)
 
-  const [Email, setEmail] = useState('');
-  const [Password, setPassword] = useState('');
+    const [Email, setEmail] = useState('')
+    const [Password, setPassword] = useState('')
 
-  const onEmailHandler = (event) => {
-    setEmail(event.currentTarget.value);
-  };
+    const onEmailHandler = event => {
+        setEmail(event.currentTarget.value)
+    }
 
-  const onPasswordHandler = (event) => {
-    setPassword(event.currentTarget.value);
-  };
+    const onPasswordHandler = event => {
+        setPassword(event.currentTarget.value)
+    }
 
-  const onSubmitHandler = (event) => {
-    event.preventDefault();
+    const onSubmitHandler = event => {
+        event.preventDefault()
 
-    let body = {
-      email: Email,
-      password: Password,
-    };
+        let body = {
+            email: Email,
+            password: Password,
+        }
 
-    dispatch(loginUser(body)).then((response) => {
-      // response 값에 user_reducer의 state 값이 리턴되어 들어옴
-      console.log(response);
-      if (response.payload.loginSuccess) {
-        props.history.push('/home');
-      } else {
-        alert('Error˝');
-      }
-    });
-  };
+        dispatch(loginUser(body)).then(response => {
+            // response 값에 user_reducer의 state 값이 리턴되어 들어옴
+            console.log(response)
+            if (response.payload.loginSuccess) {
+                props.history.push('/home')
+            } else {
+                alert('Error˝')
+            }
+        })
+    }
 
-  return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: '100vh',
-      }}
-    >
-      <form
-        style={{ display: 'flex', flexDirection: 'column' }}
-        onSubmit={onSubmitHandler}
-      >
-        <label>Email</label>
-        <SignIn_Input
-          type="email"
-          value={Email}
-          onChange={onEmailHandler}
-          placeholder="Email"
-        />
-        {/* <input type="email" value={Email} onChange={onEmailHandler} /> */}
-        <label>Password</label>
-        <SignIn_Input
-          type="password"
-          value={Password}
-          onChange={onPasswordHandler}
-          placeholder="Password"
-        />
-        {/* <input type="password" value={Password} onChange={onPasswordHandler} /> */}
-        <br />
-        {/* <button type="submit">Login</button> */}
-        <SignIn_button type="submit">Login</SignIn_button>
-      </form>
-    </div>
-  );
+    return (
+        <div
+            style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+                height: '100vh',
+            }}
+        >
+            <form style={{display: 'flex', flexDirection: 'column'}} onSubmit={onSubmitHandler}>
+                <label>Email</label>
+                <SignIn_Input type="email" value={Email} onChange={onEmailHandler} placeholder="Email" />
+                {/* <input type="email" value={Email} onChange={onEmailHandler} /> */}
+                <label>Password</label>
+                <SignIn_Input type="password" value={Password} onChange={onPasswordHandler} placeholder="Password" />
+                {/* <input type="password" value={Password} onChange={onPasswordHandler} /> */}
+                <br />
+                {/* <button type="submit">Login</button> */}
+                <SignIn_button type="submit">Login</SignIn_button>
+            </form>
+        </div>
+    )
 }
 
-export default withRouter(LoginPage);
+export default withRouter(LoginPage)
 
 // import React, { useState } from "react";
 // import { withRouter } from "react-router-dom";
