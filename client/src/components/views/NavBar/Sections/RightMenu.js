@@ -8,16 +8,19 @@ import {useSelector} from 'react-redux'
 import styled from 'styled-components'
 const Upload = require('../../../../assets/images/upload.png')
 
-const Logout_Button = styled.div`
+const LogoutButton = styled.div`
     font-family: consolas;
     font-size: 15px;
+    line-height: 50px;
     padding: 10px;
     background: #261201;
-    margin-top: 15px;
-    border-radius: 40px;
+    margin-top: 10px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
 `
 
-const Logout_Link = styled.a`
+const LogoutLink = styled.a`
     color: white;
     &:hover {
         color: #8c704f;
@@ -38,36 +41,14 @@ function RightMenu(props) {
     }
 
     if (user.userData && !user.userData.isAuth) {
-        return (
-            // <Menu mode={props.mode}>
-            //     <Menu.Item key="mail">
-            //         <a href="/login">Signin</a>
-            //     </Menu.Item>
-            //     <Menu.Item key="app">
-            //         <a href="/register">Signup</a>
-            //     </Menu.Item>
-            // </Menu>
-            null
-        )
+        return null
     } else {
         return (
-            <Menu mode={props.mode}>
-                {/* <Menu.Item key="create">
-          <a href="/post/upload">
-            <img src={Upload} alt="Upload" />
-          </a>
-        </Menu.Item> */}
-                {/* <Menu.Item key="logout">
-          <a onClick={logoutHandler} style={{ marginTop: '10px' }}>
-            Logout
-          </a>
-        </Menu.Item> */}
-                <Logout_Button>
-                    <Logout_Link onClick={logoutHandler} style={{marginTop: '10px'}}>
-                        Logout
-                    </Logout_Link>
-                </Logout_Button>
-            </Menu>
+            <LogoutButton>
+                <LogoutLink onClick={logoutHandler} style={{marginTop: '10px'}}>
+                    Logout
+                </LogoutLink>
+            </LogoutButton>
         )
     }
 }
