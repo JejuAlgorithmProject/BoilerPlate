@@ -5,13 +5,15 @@ import styled from 'styled-components'
 // import './login_register.css'
 
 const Container = styled.div`
-    top: -5vh;
-    position: relative;
-    width: 800px;
-    height: 70vh;
-    max-height: 70vh;
-    margin: 100px auto;
-`
+
+  top: -5vh;
+  position: relative;
+  width: 1000px;
+  height: 70vh;
+  max-height: 70vh;
+  margin: 100px auto;
+`;
+
 
 const Banner = styled.div`
     top: 5vh;
