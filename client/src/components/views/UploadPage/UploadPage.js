@@ -9,7 +9,8 @@ const Div = styled.div`
   max-width: 700px;
   padding: 1rem;
   border-radius: 15px;
-  box-shadow: 0 5px 80px 20px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 5px 80px 20px rgba(0, 0, 0, 0.3); */
+  box-shadow: 10px 10px 10px 2px rgba(0, 0, 0.3, 0.3);
   background: #9e9075;
   margin-bottom: 2rem;
 `;
@@ -186,8 +187,8 @@ function UploadPage(props) {
 
   return (
     <Div>
-      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <Title level={2}> Upload </Title>
+      <div style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '4rem' }}>
+        <div> Upload </div>
       </div>
 
       <Form onSubmit={onSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
