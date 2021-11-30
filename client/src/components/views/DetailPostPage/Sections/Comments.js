@@ -10,6 +10,14 @@ const Scroll = styled.div`
     height: 150px;
     width: 330px;
     overflow-y: scroll;
+    &::-webkit-scrollbar {
+        background: none;
+        width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #4b4033;
+        border-radius: 20px;
+    }
 `
 
 const {TextArea} = Input
