@@ -36,6 +36,7 @@ const User = styled.div`
     height: 100%;
     flex: 1;
     padding: 40px;
+    margin-bottom: 10px;
     background-color: #4b4033;
     border-radius: 20px;
     font-size: 1.1rem;
@@ -109,7 +110,7 @@ function DetailPostPage(props) {
                         <div>내용: {Post.description}</div>
                         <LikeDislikes Post postId={postId} userId={localStorage.getItem('userId')} />
                     </Card>
-                    <div style={{display: 'flex', flexDirection: 'column'}}>
+                    <div style={{display: 'flex', flexDirection: 'column', marginLeft: '10px'}}>
                         <User>
                             <ion-icon name="person-circle-outline" style={{fontSize: '6rem'}}></ion-icon>
                             <div>{Post.writer.name}</div>
