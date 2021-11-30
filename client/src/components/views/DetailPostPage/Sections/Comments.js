@@ -4,6 +4,14 @@ import axios from 'axios'
 import {useSelector} from 'react-redux'
 import SingleComment from './SingleComment'
 import ReplyComment from './ReplyComment'
+import styled from 'styled-components'
+
+const Scroll = styled.div`
+    height: 150px;
+    width: 330px;
+    overflow-y: scroll;
+`
+
 const {TextArea} = Input
 
 function Comments(props) {
@@ -33,28 +41,29 @@ function Comments(props) {
     }
 
     return (
-        <div>
-            <br />
-            <p> replies</p>
+        <div style={{heght: '100%'}}>
+            <p> 댓글</p>
             <hr />
             {/* Comment Lists  */}
             {console.log(user)}
 
-            {props.CommentLists &&
-                props.CommentLists.map(
-                    (comment, index) =>
-                        !comment.responseTo && (
-                            <React.Fragment key={index}>
-                                <SingleComment comment={comment} postId={props.postId} refreshFunction={props.refreshFunction} />
-                                <ReplyComment
-                                    CommentLists={props.CommentLists}
-                                    postId={props.postId}
-                                    parentCommentId={comment._id}
-                                    refreshFunction={props.refreshFunction}
-                                />
-                            </React.Fragment>
-                        ),
-                )}
+            <Scroll>
+                {props.CommentLists &&
+                    props.CommentLists.map(
+                        (comment, index) =>
+                            !comment.responseTo && (
+                                <React.Fragment key={index}>
+                                    <SingleComment comment={comment} postId={props.postId} refreshFunction={props.refreshFunction} />
+                                    <ReplyComment
+                                        CommentLists={props.CommentLists}
+                                        postId={props.postId}
+                                        parentCommentId={comment._id}
+                                        refreshFunction={props.refreshFunction}
+                                    />
+                                </React.Fragment>
+                            ),
+                    )}
+            </Scroll>
 
             {/* Root Comment Form */}
             <form style={{display: 'flex'}} onSubmit={onSubmit}>
