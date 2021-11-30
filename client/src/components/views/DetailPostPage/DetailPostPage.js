@@ -18,25 +18,23 @@ const Container = styled.div`
 
 const Grid = styled.div`
     /* background-color: pink; */
-    width: 70%;
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 3fr 1.5fr;
 `
 
 const Card = styled.div`
-    width: 100%;
-    height: 100%;
+    width: 750px;
+    height: 550px;
     background-color: #fff;
+    margin: 5px;
     padding: 40px;
     border-radius: 20px;
 `
 
 const User = styled.div`
-    width: 100%;
-    height: 100%;
     flex: 1;
+    margin: 5px;
     padding: 40px;
-    margin-bottom: 10px;
     background-color: #4b4033;
     border-radius: 20px;
     font-size: 1.1rem;
@@ -45,8 +43,7 @@ const User = styled.div`
 
 const Reply = styled.div`
     flex: 2;
-    width: 100%;
-    height: 100%;
+    margin: 5px;
     padding: 20px;
     background-color: #fff;
     border-radius: 20px;
@@ -96,13 +93,7 @@ function DetailPostPage(props) {
                             <img
                                 src={Post.selectedFile}
                                 alt=""
-                                style={{
-                                    position: 'absolute',
-                                    height: '100%',
-                                    top: '50%',
-                                    left: '50%',
-                                    transform: 'translate(-50%,-50%)',
-                                }}
+                                style={{position: 'absolute', height: '100%', top: '50%', left: '50%', transform: 'translate(-50%,-50%)'}}
                             />{' '}
                         </div>
 
@@ -110,7 +101,7 @@ function DetailPostPage(props) {
                         <div>내용: {Post.description}</div>
                         <LikeDislikes Post postId={postId} userId={localStorage.getItem('userId')} />
                     </Card>
-                    <div style={{display: 'flex', flexDirection: 'column', marginLeft: '10px'}}>
+                    <div style={{display: 'flex', flexDirection: 'column'}}>
                         <User>
                             <ion-icon name="person-circle-outline" style={{fontSize: '6rem'}}></ion-icon>
                             <div>{Post.writer.name}</div>
