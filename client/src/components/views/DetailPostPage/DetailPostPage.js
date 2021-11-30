@@ -17,7 +17,6 @@ const Container = styled.div`
 `
 
 const Grid = styled.div`
-    /* background-color: pink; */
     display: grid;
     grid-template-columns: 3fr 1.5fr;
 `
@@ -39,6 +38,8 @@ const User = styled.div`
     border-radius: 20px;
     font-size: 1.1rem;
     color: white;
+    display: flex;
+    align-items: center;
 `
 
 const Reply = styled.div`
@@ -103,9 +104,11 @@ function DetailPostPage(props) {
                     </Card>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
                         <User>
-                            <ion-icon name="person-circle-outline" style={{fontSize: '6rem'}}></ion-icon>
-                            <div>{Post.writer.name}</div>
-                            <div>{Post.writer.email}</div>
+                            <ion-icon name="person-circle-outline" style={{fontSize: '6rem', color: 'lightgrey'}}></ion-icon>
+                            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginLeft: '20px'}}>
+                                <div>{Post.writer.name}</div>
+                                <div style={{color: 'lightgrey'}}>{Post.writer.email}</div>
+                            </div>
                         </User>
                         <Reply>
                             <Comments CommentLists={CommentLists} postId={Post._id} refreshFunction={updateComment} />

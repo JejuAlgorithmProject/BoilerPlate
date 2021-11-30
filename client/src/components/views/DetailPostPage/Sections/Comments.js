@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {Button, Input} from 'antd'
 import axios from 'axios'
 import {useSelector} from 'react-redux'
 import SingleComment from './SingleComment'
@@ -20,7 +19,35 @@ const Scroll = styled.div`
     }
 `
 
-const {TextArea} = Input
+const Textarea = styled.textarea`
+    width: 70%;
+    border: 1px solid #d9c5a0;
+    transition: all 0.5s;
+    font-size: 1rem;
+    padding: 10px;
+    margin-right: 5px;
+    &:hover {
+        box-shadow: 0px 0px 10px 2px #d9c5a0;
+    }
+    &:focus {
+        outline: none;
+        box-shadow: 0px 0px 5px 2px #d9c5a0;
+    }
+`
+
+const Button = styled.button`
+    width: 30%;
+    height: 100%;
+    border: 1px solid #d9c5a0;
+    background: #d9c5a0;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: #fff;
+    &:hover {
+        box-shadow: 0px 0px 10px #d9c5a0;
+        cursor: pointer;
+    }
+`
 
 function Comments(props) {
     const user = useSelector(state => state.user)
@@ -49,7 +76,7 @@ function Comments(props) {
     }
 
     return (
-        <div style={{heght: '100%'}}>
+        <div style={{heght: '100%', fontSize: '1rem'}}>
             <p> 댓글</p>
             <hr />
             {/* Comment Lists  */}
@@ -74,17 +101,14 @@ function Comments(props) {
             </Scroll>
 
             {/* Root Comment Form */}
-            <form style={{display: 'flex'}} onSubmit={onSubmit}>
-                <TextArea
+            <form style={{display: 'flex', height: '60px', marginTop: '10px'}} onSubmit={onSubmit}>
+                <Textarea
                     style={{width: '100%', borderRadius: '5px'}}
                     onChange={handleChange}
                     value={Comment}
                     placeholder="write some comments"
                 />
-                <br />
-                <Button style={{width: '20%', height: '52px'}} onClick={onSubmit}>
-                    Submit
-                </Button>
+                <Button onClick={onSubmit}>Submit</Button>
             </form>
         </div>
     )
