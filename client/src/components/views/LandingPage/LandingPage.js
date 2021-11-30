@@ -1,31 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { FaCode } from 'react-icons/fa';
-import { Card, Avatar, Col, Typography, Row } from 'antd';
-import axios from 'axios';
-import moment from 'moment';
-import UploadPage from '../UploadPage/UploadPage';
-import { useSelector } from 'react-redux';
-import NavBar from '../NavBar/NavBar';
+import React, {useEffect, useState} from 'react'
+import {FaCode} from 'react-icons/fa'
+import {Card, Avatar, Col, Typography, Row} from 'antd'
+import axios from 'axios'
+import moment from 'moment'
+import UploadPage from '../UploadPage/UploadPage'
+import {useSelector} from 'react-redux'
+import NavBar from '../NavBar/NavBar'
 
-const { Title } = Typography;
+const {Title} = Typography
 // const { Meta } = Card;
 
 function LandingPage() {
-  const [Posts, setPosts] = useState([]);
-  const user = useSelector((state) => state.user);
-  console.log(user);
+    const [Posts, setPosts] = useState([])
+    const user = useSelector(state => state.user)
+    console.log(user)
 
-  useEffect(() => {
-    axios.get('/api/post/getPosts').then((response) => {
-      console.log(response);
-      if (response.data.success) {
-        // setPosts (보여줘야하는 posts )
-        setPosts(response.data.posts);
-      } else {
-        alert('Failed to get posts');
-      }
-    });
-  }, []);
+    useEffect(() => {
+        axios.get('/api/post/getPosts').then(response => {
+            console.log(response)
+            if (response.data.success) {
+                // setPosts (보여줘야하는 posts )
+                setPosts(response.data.posts)
+            } else {
+                alert('Failed to get posts')
+            }
+        })
+    }, [])
+
 
   const renderCards = Posts.map((post, index) => {
     console.log(post);
@@ -50,10 +51,11 @@ function LandingPage() {
     );
   });
 
-  return (
-    <div style={{ width: '90%', margin: '3rem auto' }}>
-      <Title level={2}> 일긔 </Title>
-      <hr />
+
+    return (
+        <div style={{width: '90%', margin: '3rem auto'}}>
+            <Title level={2}> 일긔 </Title>
+            <hr />
 
       <Row gutter={16} style={{ margin: '2rem auto' }}>
         <Col span={16}>
@@ -65,6 +67,7 @@ function LandingPage() {
       </Row>
     </div>
   );
+
 }
 
-export default LandingPage;
+export default LandingPage
