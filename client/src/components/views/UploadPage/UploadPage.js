@@ -178,7 +178,7 @@ function UploadPage(props) {
       if (response.data.success) {
         alert('Uploaded Successfully');
         // props.history.push('/')
-        window.location.replace('/');
+        window.location.replace('/home');
       } else {
         alert('Failed to upload');
       }
@@ -187,16 +187,16 @@ function UploadPage(props) {
 
   return (
     <Div>
-      <div style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '4rem' }}>
-        <div> Upload </div>
+      <div style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2rem', fontWeight: 'bold' }}>
+        <div> 일기 쓰기 </div>
       </div>
 
       <Form onSubmit={onSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-        <label>Title</label>
+        <label>일기 제목</label>
         <InputTitle onChange={handleChangeTitle} value={title} />
         <br />
         <br />
-        <label>Description</label>
+        <label>일기 내용</label>
         <TextAreaDes onChange={handleChangeDecsription} value={description} />
         <br />
         <br />
@@ -228,7 +228,7 @@ function UploadPage(props) {
         <br />
 
         <SubmitButton type="primary" size="large" onClick={onSubmit}>
-          Submit
+          일기 등록
         </SubmitButton>
       </Form>
     </Div>
