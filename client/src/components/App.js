@@ -11,12 +11,11 @@ import DetailPostPage from './views/DetailPostPage/DetailPostPage';
 import UploadPage from './views/UploadPage/UploadPage.js';
 import HomePage from './views/HomePage/HomePage';
 import SignPage from './views/SignPage/SignPage';
-// import SubscriptionPage from "./views/SubscriptionPage/SubscriptionPage"
 import '../static/fonts/font.css';
 function App() {
   return (
     // suspense 란 밑에 코드가 호출되기 전까지 보여주는,,
-    <div style={{ fontFamily: 'Dongle' }}>
+    <div style={{ fontFamily: 'Sunflower' }}>
       <Suspense fallback={<div>Loading...</div>}>
         <NavBar />
         <div
