@@ -1,5 +1,4 @@
 {
-  "homepage": "https://jejualgorithmproject.github.io/BoilerPlate/",
   "name": "react-chat-app",
   "version": "1.0.0",
   "description": "react blog",
@@ -12,9 +11,7 @@
     "start": "node server/index.js",
     "backend": "nodemon server/index.js",
     "frontend": "npm run front --prefix client",
-    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
-    "predeploy": "npm run dev",
-    "deploy": "gh-pages -d dev"
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
   },
   "author": "John ahn",
   "license": "ISC",
