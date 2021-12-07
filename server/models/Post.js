@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+/* post 데이터 모델 */
 const PostSchema = mongoose.Schema(
     {
         writer: {
@@ -17,9 +18,6 @@ const PostSchema = mongoose.Schema(
         weather: {
             type: String,
         },
-        // filePath: {
-        //     type: String,
-        // },
         category: {
             type: String,
         },
@@ -27,12 +25,6 @@ const PostSchema = mongoose.Schema(
             type: Number,
             default: 0,
         },
-        // duration: {
-        //     type: String,
-        // },
-        // thumbnail: {
-        //     type: String,
-        // },
         selectedFile: {
             type: String,
         },

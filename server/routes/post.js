@@ -1,74 +1,10 @@
 const express = require('express')
 const router = express.Router()
-// const multer = require('multer')
-// var ffmpeg = require('fluent-ffmpeg')
-
 const {Post} = require('../models/Post')
-// const {Subscriber} = require('../models/Subscriber')
-const {auth} = require('../middleware/auth')
 
-// var storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, 'uploads/')
-//     },
-//     filename: (req, file, cb) => {
-//         cb(null, `${Date.now()}_${file.originalname}`)
-//     },
-//     fileFilter: (req, file, cb) => {
-//         const ext = path.extname(file.originalname)
-//         if (ext !== '.mp4') {
-//             return cb(res.status(400).end('only jpg, png, mp4 is allowed'), false)
-//         }
-//         cb(null, true)
-//     },
-// })
-
-// var upload = multer({storage: storage}).single('file')
-
-//=================================
-//             User
-//=================================
-
-// router.post('/uploadfiles', (req, res) => {
-//     upload(req, res, err => {
-//         if (err) {
-//             return res.json({success: false, err})
-//         }
-//         return res.json({success: true, filePath: res.req.file.path, fileName: res.req.file.filename})
-//     })
-// })
-
-// router.post('/thumbnail', (req, res) => {
-//     let thumbsFilePath = ''
-//     let fileDuration = ''
-
-//     ffmpeg.ffprobe(req.body.filePath, function (err, metadata) {
-//         console.dir(metadata)
-//         console.log(metadata.format.duration)
-
-//         fileDuration = metadata.format.duration
-//     })
-
-//     ffmpeg(req.body.filePath)
-//         .on('filenames', function (filenames) {
-//             console.log('Will generate ' + filenames.join(', '))
-//             thumbsFilePath = 'uploads/thumbnails/' + filenames[0]
-//         })
-//         .on('end', function () {
-//             console.log('Screenshots taken')
-//             return res.json({success: true, thumbsFilePath: thumbsFilePath, fileDuration: fileDuration})
-//         })
-//         .screenshots({
-//             // Will take screens at 20%, 40%, 60% and 80% of the video
-//             count: 3,
-//             folder: 'uploads/thumbnails',
-//             size: '320x240',
-//             // %b input basename ( filename w/o extension )
-//             filename: 'thumbnail-%b.png',
-//         })
-// })
-
+/* getPosts 게시된 포스트를 전부 가져오는 라우터 */
 router.get('/getPosts', (req, res) => {
+    /* DB에 Post모델에 데이터를 가져옴 */
     Post.find()
         .populate('writer')
         .exec((err, posts) => {
@@ -77,9 +13,12 @@ router.get('/getPosts', (req, res) => {
         })
 })
 
+/* 포스트를 업로드하는 라우터 */
 router.post('/uploadPost', (req, res) => {
+    /* req.body, 받은 데이터를 Post모델에 넣고, post변수에 삽입 */
     const post = new Post(req.body)
 
+    /* post데이터를 db에 저장  실패시 200번 에러 발생*/
     post.save((err, post) => {
         if (err) return res.status(400).json({success: false, err})
         return res.status(200).json({
@@ -88,7 +27,9 @@ router.post('/uploadPost', (req, res) => {
     })
 })
 
+/* Posts들 중에서 원하는 post한개만 가져오기 -> 디테일 페이지로 활용 */
 router.post('/getPost', (req, res) => {
+    /* req.body.postId와 일치하는 _id를 찾은 후, post값을 리턴 */
     Post.findOne({_id: req.body.postId})
         .populate('writer')
         .exec((err, post) => {
@@ -96,27 +37,5 @@ router.post('/getPost', (req, res) => {
             res.status(200).json({success: true, post})
         })
 })
-
-// router.post('/getSubscriptionVideos', (req, res) => {
-//     //Need to find all of the Users that I am subscribing to From Subscriber Collection
-
-//     Subscriber.find({userFrom: req.body.userFrom}).exec((err, subscribers) => {
-//         if (err) return res.status(400).send(err)
-
-//         let subscribedUser = []
-
-//         subscribers.map((subscriber, i) => {
-//             subscribedUser.push(subscriber.userTo)
-//         })
-
-//         //Need to Fetch all of the Videos that belong to the Users that I found in previous step.
-//         Video.find({writer: {$in: subscribedUser}})
-//             .populate('writer')
-//             .exec((err, videos) => {
-//                 if (err) return res.status(400).send(err)
-//                 res.status(200).json({success: true, videos})
-//             })
-//     })
-// })
 
 module.exports = router

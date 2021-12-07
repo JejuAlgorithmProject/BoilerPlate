@@ -9,6 +9,7 @@ function LikeDislikes(props) {
     const [DislikeAction, setDislikeAction] = useState(null)
     let variable = {}
 
+    console.log(props.Post)
     if (props.Post) {
         variable = {postId: props.postId, userId: props.userId}
     } else {

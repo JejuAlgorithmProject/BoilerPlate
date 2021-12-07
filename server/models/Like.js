@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+/* like 데이터 모델 */
 const likeSchema = mongoose.Schema(
     {
         userId: {

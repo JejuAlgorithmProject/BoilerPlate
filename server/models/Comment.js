@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+/* Comment 데이터 모델 */
 const commentSchema = mongoose.Schema(
     {
         writer: {

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+/* dislike 데이터 모델 */
 const dislikeSchema = mongoose.Schema(
     {
         userId: {
