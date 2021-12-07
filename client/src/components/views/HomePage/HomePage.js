@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from 'react';
+
 import styles from './style.module.css';
 
-function HomePage(props) {
+function HomePage() {
   return (
     <div className={styles.background}>
       <div className={styles.loader}>

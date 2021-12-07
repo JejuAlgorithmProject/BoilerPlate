@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import RightMenu from './Sections/RightMenu';
 import './Sections/Navbar.css';
 import styled, { keyframes } from 'styled-components';
-import animate from '../HomePage/style.module.css';
 
 const round = keyframes`
   0% {
@@ -63,7 +62,6 @@ function NavBar() {
             <div
               style={{
                 width: '60px',
-                // marginTop: '-5px',
                 height: '60px',
                 display: 'flex',
                 position: 'relative',

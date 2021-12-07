@@ -6,7 +6,6 @@ import LandingPage from './views/LandingPage/LandingPage.js';
 import LoginPage from './views/LoginPage/LoginPage.js';
 import RegisterPage from './views/RegisterPage/RegisterPage.js';
 import NavBar from './views/NavBar/NavBar';
-import Footer from './views/Footer/Footer';
 import DetailPostPage from './views/DetailPostPage/DetailPostPage';
 import UploadPage from './views/UploadPage/UploadPage.js';
 import HomePage from './views/HomePage/HomePage';
@@ -21,7 +20,6 @@ function App() {
         <div
           style={{
             paddingTop: '75px',
-            // minHeight: 'calc(100vh - 80px)',
             minHeight: 'calc(100vh)',
             backgroundColor: '#D9C5A0',
           }}

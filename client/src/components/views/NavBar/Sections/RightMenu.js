@@ -1,15 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { Menu } from 'antd';
 import axios from 'axios';
 import { USER_SERVER } from '../../../Config';
 import { withRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-const Upload = require('../../../../assets/images/upload.png');
 
 const LogoutButton = styled.div`
-  /* font-family: consolas; */
   font-size: 15px;
   line-height: 50px;
   padding: 10px;

@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { FaCode } from 'react-icons/fa';
-import { Card, Avatar, Col, Typography, Row } from 'antd';
+import { Col, Typography, Row } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
 import UploadPage from '../UploadPage/UploadPage';
 import { useSelector } from 'react-redux';
-import NavBar from '../NavBar/NavBar';
 import styled from 'styled-components';
 
 const P = styled.p`
   position: absolute;
   width: 100%;
-  /* text-align: center; */
   font-size: large;
   font-weight: 300;
   color: #735f4d;
@@ -19,7 +16,6 @@ const P = styled.p`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
 `;
 const DivPost = styled.div`
   height: 280px;
@@ -39,7 +35,6 @@ const DivPost = styled.div`
 `;
 
 const { Title } = Typography;
-// const { Meta } = Card;
 
 function LandingPage() {
   const [Posts, setPosts] = useState([]);
