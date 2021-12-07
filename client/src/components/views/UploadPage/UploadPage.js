@@ -85,6 +85,7 @@ const SelectW = styled.select`
   cursor: pointer;
 `;
 
+// 오늘의 날씨
 const Private = [
   { value: '맑음' },
   { value: '구름조금' },
@@ -101,6 +102,7 @@ const Private = [
   { value: '천둥번개' },
 ];
 
+// 오늘의 기분
 const Catogory = [
   { value: '기쁨' },
   { value: '분노' },
@@ -119,6 +121,7 @@ const Catogory = [
 function UploadPage(props) {
   const user = useSelector((state) => state.user);
 
+  // 상태관리
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [weather, setWeather] = useState('맑음');
@@ -138,21 +141,23 @@ function UploadPage(props) {
   };
 
   const handleChangeCate = (event) => {
-    console.log(event.currentTarget.value);
     setCategory(event.currentTarget.value);
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
 
+    // login 하지 않았을 시
     if (user.userData && !user.userData.isAuth) {
       return alert('Please Log in First');
     }
 
+    // 일기 제목과 일기 내용을 적지 않았을 시
     if (title === '' || description === '') {
       return alert('Please first fill all the fields');
     }
 
+    // post로 넘겨줄 데이터 variables
     const variables = {
       writer: user.userData._id,
       title: title,
@@ -162,13 +167,16 @@ function UploadPage(props) {
       selectedFile: selectedFile,
     };
 
+    // variables값을 넣어 axios를 통해 백엔드로 post 요청
     axios.post('/api/post/uploadPost', variables).then((response) => {
       console.log(response);
+      // 성공 시
       if (response.data.success) {
         alert('Uploaded Successfully');
-        // props.history.push('/')S
+        // /home페이지 새로고침
         window.location.replace('/home');
       } else {
+        // 실패 시
         alert('Failed to upload');
       }
     });

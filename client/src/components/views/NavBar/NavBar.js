@@ -37,21 +37,11 @@ const Span = styled.span`
 const Home = styled.span`
   font-size: 0.8em;
   color: black;
-  /* font-family: consolas; */
 `;
 
 function NavBar() {
-  const [visible, setVisible] = useState(false);
-
-  const showDrawer = () => {
-    setVisible(true);
-  };
-
-  const onClose = () => {
-    setVisible(false);
-  };
-
   if (window.location.pathname === '/') {
+    // homepage navbar영역 지우기
     return null;
   }
   return (

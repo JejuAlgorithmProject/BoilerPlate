@@ -4,14 +4,6 @@ import Comments from './Sections/Comments';
 import LikeDislikes from './Sections/LikeDislikes';
 import styled from 'styled-components';
 
-// const Img = styled.div`
-//   position: absolute;
-//   height: 100%;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-// `;
-
 const Container = styled.div`
   margin-top: -75px;
   padding-top: 75px;
@@ -114,6 +106,7 @@ const UserIntroduce = styled.div`
 
 function DetailPostPage(props) {
   console.log(props);
+
   const postId = props.match.params.postId;
   const [Post, setPost] = useState([]);
   const [CommentLists, setCommentLists] = useState([]);
@@ -123,8 +116,10 @@ function DetailPostPage(props) {
   };
 
   useEffect(() => {
+    // postVariable(postId)에 따라 데이터 가져오기 -> 백엔드 코드 참고
     axios.post('/api/post/getPost', postVariable).then((response) => {
       if (response.data.success) {
+        // 성공 시 setPost에 값 전달?
         setPost(response.data.post);
         console.log(response.data.post);
       } else {
@@ -132,9 +127,11 @@ function DetailPostPage(props) {
       }
     });
 
+    // postVariable(postId)에 따라 데이터 가져오기-> 백엔드 코드 참고
     axios.post('/api/comment/getComments', postVariable).then((response) => {
       if (response.data.success) {
         console.log('response.data.comments', response.data.comments);
+        // 성공 시 setCommentLists에 값 전달?
         setCommentLists(response.data.comments);
       } else {
         alert('Failed to get video Info');
@@ -185,6 +182,7 @@ function DetailPostPage(props) {
               </UserIntroduce>
             </User>
             <Reply>
+              {/* updateComment를 통해 comment 업로드 */}
               <Comments CommentLists={CommentLists} postId={Post._id} refreshFunction={updateComment} />
             </Reply>
           </div>

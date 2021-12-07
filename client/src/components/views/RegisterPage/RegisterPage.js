@@ -39,33 +39,48 @@ const SignUpButton = styled.button`
   }
 `;
 
+const Register = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+`;
+
 function RegisterPage(props) {
   const dispatch = useDispatch();
 
+  // useState로 상태관리
   const [Email, setEmail] = useState('');
   const [Name, setName] = useState('');
   const [Password, setPassword] = useState('');
   const [ConfirmPassword, setConfirmPassword] = useState('');
 
+  // email 핸들러
   const onEmailHandler = (event) => {
     setEmail(event.currentTarget.value);
   };
 
+  // name 핸들러
   const onNameHandler = (event) => {
     setName(event.currentTarget.value);
   };
 
+  // password 핸들러
   const onPasswordHandler = (event) => {
     setPassword(event.currentTarget.value);
   };
 
+  // password confirm 핸들러
   const onConfirmPasswordHandler = (event) => {
     setConfirmPassword(event.currentTarget.value);
   };
 
+  // 제출
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
+    // password와 confirmpassword 가 동일하지 않을 시
     if (Password !== ConfirmPassword) {
       return alert('비밀번호와 비밀번호 확인은 같아야 합니다.');
     }
@@ -75,26 +90,22 @@ function RegisterPage(props) {
       password: Password,
       name: Name,
     };
+
+    // registerUser에  body를 넣어 dispatch로 액션을 호출
     dispatch(registerUser(body)).then((response) => {
+      // 성공 시 /sign으로 새로고침
       if (response.payload.success) {
         window.location.replace('/sign');
         alert('Success to sign up');
       } else {
+        // 실패 시 알람띄우기
         alert('Failed to sign up');
       }
     });
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: '100vh',
-      }}
-    >
+    <Register>
       <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={onSubmitHandler}>
         <label>Email</label>
         <SignUpInput type="email" value={Email} onChange={onEmailHandler} placeholder="Email" />
@@ -107,7 +118,7 @@ function RegisterPage(props) {
         <br />
         <SignUpButton type="submit">Register</SignUpButton>
       </form>
-    </div>
+    </Register>
   );
 }
 

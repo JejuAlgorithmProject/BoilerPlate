@@ -114,7 +114,9 @@ const SignInButton = styled.button`
   border-radius: 24px;
   cursor: pointer;
 `;
+
 const SignPage = () => {
+  // 로그인, 회원가입 페이지 구분을 위한 상태관리
   const [isOn, setIsOn] = useState(true);
 
   const handlerActive = () => {
@@ -123,6 +125,7 @@ const SignPage = () => {
 
   return (
     <Container>
+      {/* 버튼 클릭 때마다 'active' class가 추가됨에 따라 로그인, 회원가입 페이지 전환 */}
       <Banner className={isOn ? ' ' : 'active'}>
         <Box>
           <Boxh2>Already Have an Account ?</Boxh2>

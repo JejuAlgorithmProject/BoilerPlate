@@ -85,7 +85,7 @@ function LandingPage() {
   useEffect(() => {
     // axios 비동기 통신을 통해 아래의 url로 http get요청
     axios.get('/api/post/getPosts').then((response) => {
-      // HTTP요청을 통해 받아온 데이터를 처리
+      // http요청을 통해 받아온 데이터를 처리
       console.log(response);
       if (response.data.success) {
         // setPosts (보여줘야하는 posts )
@@ -96,18 +96,21 @@ function LandingPage() {
     });
   }, []);
 
-  // 받아온 데이터를 map 함수 통해 renderCard에 할당
+  // Posts 데이터를 map 함수 통해 컴포넌트 렌더링
   const renderCards = Posts.map((post, index) => {
     console.log(post);
     return (
       <Col lg={6} md={8} xs={24} key={index}>
+        {/* 일기 내용 */}
         <DivPost>
           <PostList>
+            {/* 이미지 클릭 시 post id에 따라 해당 디테일 페이지로 이동 */}
             <a href={`/post/${post._id}`} style={{ height: '100%', position: 'relative' }}>
               <img src={post.selectedFile} alt="" width="100%" height="100%" />
               <P>자세히 보기</P>
             </a>
           </PostList>
+          {/* 일기 작성자,제목,내용,작성일  */}
           <div style={{ padding: '0.5rem' }}>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <Writer>{post.writer.name}</Writer>
@@ -125,6 +128,7 @@ function LandingPage() {
   });
 
   return (
+    // LandingPage
     <div style={{ width: '90%', margin: '3rem auto' }}>
       <div style={{ fontSize: '2em' }}>일기를 꾸준히 써라. 그렇다면 언젠가는 일기가 너를 간직할 것이다_메이 웨스트</div>
       <hr />
