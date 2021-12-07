@@ -1,25 +1,21 @@
-import {
-  LOGIN_USER,
-  REGISTER_USER,
-  AUTH_USER,
-  LOGOUT_USER,
-} from '../_actions/types';
+import {LOGIN_USER, REGISTER_USER, AUTH_USER, LOGOUT_USER} from '../_actions/types'
 
 // reducer의 형태이므로 외워두기!
+// 리듀서의 역할, switch문으로 리턴받은 action의 타입별로 구분하고, payload값을 state객체에 넣고 리턴
 // (함수 이름 정해주지 않구,,) export 해준 거 reducers의 index.js 의 user로
 export default function (state = {}, action) {
-  // user_action의 type과 payload가 통째로 action 에 들어감
-  switch (action.type) {
-    case REGISTER_USER:
-      return { ...state, register: action.payload };
-    case LOGIN_USER:
-      // 빈객체state를 받아와서 loginSuccess : action.payload 로 저장
-      return { ...state, loginSucces: action.payload };
-    case AUTH_USER:
-      return { ...state, userData: action.payload };
-    case LOGOUT_USER:
-      return { ...state };
-    default:
-      return state;
-  }
+    // user_action의 type과 payload가 통째로 action 에 들어감
+    switch (action.type) {
+        case REGISTER_USER:
+            return {...state, register: action.payload}
+        case LOGIN_USER:
+            // 빈객체state를 받아와서 loginSuccess : action.payload 로 저장
+            return {...state, loginSucces: action.payload}
+        case AUTH_USER:
+            return {...state, userData: action.payload}
+        case LOGOUT_USER:
+            return {...state}
+        default:
+            return state
+    }
 }

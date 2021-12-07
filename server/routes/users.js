@@ -4,7 +4,7 @@ const {User} = require('../models/User')
 
 const {auth} = require('../middleware/auth')
 
-/* auth미들웨어 받는 데이터 user모델의 데이터*/
+/* 페이지별 권한을 부여하기 위한 auth 라우터 생성 리턴값은 user의 모델 데이터 */
 router.get('/auth', auth, (req, res) => {
     res.status(200).json({
         _id: req.user._id,
